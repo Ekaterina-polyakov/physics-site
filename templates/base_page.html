@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block pagetitle %}{% endblock %}</title>
+    <!-- load static -->
+    {% load static %}
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'semantic.min.css' %}">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            padding: 1em; 
+        }
+
+        .header {
+            margin-bottom: 1em;
+            border-bottom: 1px solid rgba(34, 36, 38, .15); 
+            padding-bottom: 0.5em; 
+        }
+
+        .header a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header img {
+            margin-right: 0.5em;
+        }
+
+        .title-box {
+            background-color: #f9f9f9; 
+            border-radius: 0.28571429rem;
+            padding: 2em; 
+            margin-bottom: 2em; 
+        }
+
+        .footer {
+            padding-top: 1em;
+            margin-top: 2em;
+            border-top: 1px solid rgba(34, 36, 38, .15); 
+            color: rgba(0, 0, 0, 0.4); 
+        }
+    </style>
+</head>
+<body>
+    <div class="ui container">
+        <header class="header">
+            <a href="/">
+                <img src="{% static 'physics.png' %}" alt="Проект про математику" width="32" height="32"/>
+                <span class="ui header">Изучаем физику!</span>
+            </a>
+        </header>
+
+        <div class="ui segment title-box">
+            <h1 class="ui header">{% block page-title %}{% endblock %}</h1>
+            <p>{% block page-lead %}{% endblock %}</p>
+        </div>
+
+        {% block content %}{% endblock %}
+
+        <footer class="footer">
+            © 2025
+        </footer>
+    </div>
+
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="{% static 'semantic.min.js' %}"></script>
+
+</body>
+</html>

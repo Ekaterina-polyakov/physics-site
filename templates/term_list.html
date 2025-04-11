@@ -1,0 +1,34 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Список формул
+{% endblock %}
+
+{% block page-lead %}
+Все формулы.
+{% endblock %}
+
+{% block content %}
+<div class="ui container" id="terms-table">
+    <div class="ui segment">
+        <table class="ui celled striped table">
+            <thead>
+                <tr>
+                    <th class="center aligned">#</th>
+                    <th>Формула</th>
+                    <th>Описание</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cnt, term, definition in terms %}
+                <tr>
+                    <td class="center aligned">{{ cnt }}</td>
+                    <td>{{ term }}</td>
+                    <td>{{ definition }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

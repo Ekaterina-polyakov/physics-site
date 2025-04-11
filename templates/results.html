@@ -1,0 +1,86 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Результаты игры
+{% endblock %}
+
+{% block page-lead %}
+Ваши результаты:
+{% endblock %}
+
+{% block content %}
+<div class="ui container" id="results">
+    <div class="ui segment">
+        <h2 class="ui header">Результаты игры</h2>
+        
+        <div class="ui statistics">
+            <div class="statistic">
+                <div class="value">
+                    {{ correct_answers }}
+                </div>
+                <div class="label">
+                    Правильных ответов
+                </div>
+            </div>
+            <div class="statistic">
+                <div class="value">
+                    {{ total_questions }}
+                </div>
+                <div class="label">
+                    Всего вопросов
+                </div>
+            </div>
+            <div class="statistic">
+                <div class="value">
+                    {{ percentage }}%
+                </div>
+                <div class="label">
+                    Успешность
+                </div>
+            </div>
+        </div>
+
+        <div class="ui indicating progress" id="game-progress">
+            <div class="bar"></div>
+        </div>
+
+        <h3 class="ui header">Детали ответов:</h3>
+        <div class="ui relaxed divided list">
+            {% for result in results %}
+                <div class="item">
+                    <div class="content">
+                        <div class="header">{{ result.formula }}</div>
+                        <div class="description">
+                            <p>Ваш выбор: {{ result.chosen_formula }}</p>
+                            <p>Правильно: {{ result.correct_formula }}</p>
+                            {% if result.is_correct %}
+                                <div class="ui green horizontal label">✓ Верно</div>
+                            {% else %}
+                                <div class="ui red horizontal label">✗ Неверно</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('#game-progress').progress({
+        percent: {{ percentage|floatformat:0 }},
+        showActivity: false
+    });
+});
+</script>
+
+<style>
+#game-progress {
+    margin: 1em 0 2em 0;
+}
+.ui.statistics {
+    margin-bottom: 2em;
+}
+</style>
+{% endblock %}

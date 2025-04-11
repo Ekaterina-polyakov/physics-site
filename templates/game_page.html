@@ -1,0 +1,78 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Мини-игра: Соедини слова
+{% endblock %}
+
+{% block page-lead %}
+Соедините русские и английские слова, выбирая соответствия в выпадающих списках.
+{% endblock %}
+
+{% block content %}
+<div class="ui container" id="game-form">
+    <h3 class="ui header">Соедините слова</h3>
+
+    <form class="ui form" method="post" action="/check-game" id="game-form" onsubmit="return validateForm()">
+        <div class="ui segment">
+            {% for formula in formulas %}
+                <div class="field">
+                    <label>{{ formula }}</label>
+                    <input type="hidden" name="formula_{{ forloop.counter }}" value="{{ formula }}">
+                    <select id="explanation_{{ forloop.counter }}" name="explanation_choice_{{ forloop.counter }}" class="ui dropdown" required>
+                        <option value="">Выберите соответствие...</option>
+                        {% for explanation in explanations %}
+                            <option value="{{ explanation }}">{{ explanation }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="ui pointing red basic label error-text" style="display: none;">
+                        Выберите вариант
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="ui primary button">
+            Проверить
+        </button>
+    </form>
+</div>
+
+<script>
+function validateForm() {
+    let isValid = true;
+    const selects = document.querySelectorAll('.ui.dropdown');
+    
+    selects.forEach(select => {
+        const errorLabel = select.nextElementSibling;
+        
+        if (!select.querySelector('input').value) {
+            isValid = false;
+            select.classList.add('error');
+            errorLabel.style.display = 'block';
+        } else {
+            select.classList.remove('error');
+            errorLabel.style.display = 'none';
+        }
+    });
+
+    if (!isValid) {
+        alert('Пожалуйста, выберите все соответствия перед проверкой!');
+        return false;
+    }
+    return true;
+}
+
+$(document).ready(function() {
+    $('.ui.dropdown').dropdown();
+});
+</script>
+
+<style>
+.error-text {
+    margin-top: 5px;
+}
+.ui.dropdown.error {
+    border-color: #e0b4b4 !important;
+}
+</style>
+{% endblock %}

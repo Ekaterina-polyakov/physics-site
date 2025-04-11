@@ -1,0 +1,31 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+{% if success %}
+Термин добавлен
+{% else %}
+Ошибка добавления
+{% endif %}
+{% endblock %}
+
+{% block page-lead %}{% endblock %}
+
+{% block content %}
+<div class="ui container" id="term-form-result">
+    <div class="ui segment">
+        <h2 class="ui dividing header">Результат запроса</h2>
+        <p>Уважаемый пользователь <em>{{ user }}</em>,<br/>
+            Ваш запрос завершился <strong>{% if success %}успешно{% else %}ошибкой{% endif %}</strong>.
+        </p>
+
+        <h2 class="ui dividing header">Комментарий</h2>
+        <p>{{ comment }}</p>
+
+        <h2 class="ui dividing header">Что можно сделать?</h2>
+        <div class="ui list">
+            <div class="item">заполнить <a href="/add-term">форму</a> ещё раз</div>
+            <div class="item">вернуться на <a href="/">главную</a></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

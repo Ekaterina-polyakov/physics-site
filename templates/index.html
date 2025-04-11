@@ -1,0 +1,67 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Физика и ее формулы
+{% endblock %}
+
+{% block page-lead %}
+Это страничка где можно изучить физику <br/>
+{% endblock %}
+
+{% block content %}
+<div class="ui container" id="project-contents">
+    <h2 class="ui dividing header">Что есть в этом проекте</h2>
+    <div class="ui three column stackable grid">
+        <div class="column">
+            <div class="ui segment">
+                <h3 class="ui header">Список формул</h3>
+                <p>Тут можно увидеть все внесенные формулы</p>
+                <a href="/terms-list" class="ui primary button">Посмотреть</a>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui segment">
+                <h3 class="ui header">Форма для заполнения формул</h3>
+                <p>Тут можно внести новую формулу</p>
+                <a href="/add-term" class="ui primary button">
+                    Заполнить
+                </a>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui segment">
+                <h3 class="ui header">Статистика</h3>
+                <p>Сколько формул уже есть? Какой они длины?</p>
+                <a href="/stats" class="ui primary button">
+                    Изучить
+                </a>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui segment">
+                <h3 class="ui header">Мини-игра</h3>
+                <p>Как хорошо вы знаете формулы? Давайте проверим!</p>
+                <a href="/game" class="ui primary button">
+                    Изучить
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="ui stackable grid">
+        <div class="four wide column">
+            <h4 class="ui header">Что важно знать в физике?</h4>
+        </div>
+        <div class="twelve wide column">
+            <p>Этот проект помогает выучить формулы, на которых базируются все остальные вычисления и моделирования, например</p>
+            <div class="ui list">
+                <div class="item">Формула силы растяжения пружины: \( F = kx \)</div>
+                <div class="item">Формула давления жидкости: \( p = \rho g h \)</div>
+            </div>
+            <p>
+                Надеемся, что этот сайт поможет Вам выучить формулы и хорошо сдать экзамен
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

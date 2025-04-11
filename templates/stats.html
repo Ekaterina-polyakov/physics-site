@@ -1,0 +1,65 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Статистика по формулам и играм
+{% endblock %}
+
+{% block page-lead %}
+Посмотрите сколько формул вы внесли и количество выигранных игр
+{% endblock %}
+
+{% block content %}
+<div class="ui container" id="stats">
+    <div class="ui segment">
+        <h3 class="ui dividing header">Количество формул</h3>
+        <div class="ui three statistics">
+            <div class="statistic">
+                <div class="value">
+                    {{ terms_all }}
+                </div>
+                <div class="label">
+                    всего слов
+                </div>
+            </div>
+        </div>
+
+        <h3 class="ui dividing header">Игры</h3>
+        <div class="ui three statistics">
+            <div class="statistic">
+                <div class="value">
+                    {{ games_avg }}
+                </div>
+                <div class="label">
+                    Игр всего
+                </div>
+            </div>
+            <div class="statistic">
+                <div class="value">
+                    {{ games_succes }}
+                </div>
+                <div class="label">
+                    Игр выиграно
+                </div>
+            </div>
+            <div class="statistic">
+                <div class="value">
+                    {{ games_percentage }}%
+                </div>
+                <div class="label">
+                    Процент выигрыша
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.ui.statistics {
+    margin: 1rem 0;
+}
+.ui.dividing.header {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+</style>
+{% endblock %}

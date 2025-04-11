@@ -1,0 +1,49 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Добавить формулу
+{% endblock %}
+
+{% block page-lead %}
+{% endblock %}
+
+{% block content %}
+<div class="ui container" id="term-form">
+    <form class="ui form" method="post">
+        <div class="ui segment">
+            <h3 class="ui header">Ваши контактные данные</h3>
+            <div class="two fields">
+                <div class="field">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" name="name" id="name" placeholder="Иван" required>
+                </div>
+                <div class="field">
+                    <label for="email">Ваш контактный email:</label>
+                    <input type="text" name="email" id="email" placeholder="ivan@ivanov.com" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui segment">
+            <h3 class="ui header">Ваша формула</h3>
+            <div class="fields">
+                <div class="four wide field">
+                    <label for="new_term">Формула</label>
+                    <input type="text" name="new_term" id="new_term">
+                </div>
+                <div class="twelve wide field">
+                    <label for="new_definition">Объяснение формулы</label>
+                    <textarea name="new_definition" id="new_definition" rows="3"></textarea>
+                    <div class="ui pointing label">
+                        Постарайтесь объяснить все переменные в формуле
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="ui primary button" type="submit" formaction="/send-term">
+            Отправить
+        </button>
+    </form>
+</div>
+{% endblock %}
